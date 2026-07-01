@@ -1,0 +1,41 @@
+Prompt 1:
+Here is a C program. What does it print when compiled and run?
+
+[PASTE C CODE HERE]
+
+Prompt 2:
+You are a C interpreter. Read the following C code carefully and 
+determine the exact output it produces when compiled with gcc and run.
+
+Rules:
+- Trace every function call step by step
+- Track the exact value of every variable at every step
+- Do not guess — only output what you can confirm by tracing
+
+What is the exact stdout output?
+
+[PASTE C CODE HERE]
+
+Prompt 3:
+You are a precise C runtime emulator running on a little-endian 
+x86-64 system with the following properties:
+  - gcc -O0 -std=c99
+  - sizeof(int) = 4, sizeof(uint32_t) = 4
+  - CHAR_BIT = 8
+  - All arithmetic is wrapping (no undefined behavior)
+  - All right shifts on unsigned types are logical
+
+Your task: determine the EXACT stdout output of the following C program.
+
+Instructions:
+  1. List every function in the order they are defined
+  2. For each seed value, trace pipeline() from the outermost 
+     call down to the deepest function, tracking the exact 
+     uint32_t value at every step
+  3. Show the final value before the printf
+  4. Print the exact output line the printf would produce
+
+Do not approximate. Do not skip steps. If you lose track of a 
+value at any point, say so explicitly rather than guessing.
+
+[PASTE C CODE HERE]
