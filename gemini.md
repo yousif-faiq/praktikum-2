@@ -6,7 +6,7 @@ p3: ~6, no correct output.
 gemini3.1pro for c2:
 p1: 3min, no
 p2: 4 min, no
-p3: 
+p3: 5 min, no.
 
 gemini3.1pro for c3:
 p1:

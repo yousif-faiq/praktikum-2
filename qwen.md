@@ -6,7 +6,7 @@ p3: 30s, got the output
 qwen3.7plus for c2:
 p1: 3s, got it.
 p2: 10s, got it
-p3: 
+p3: 40s, got it
 
 qwen3.7plus for c3:
 p1:
