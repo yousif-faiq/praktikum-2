@@ -1,16 +1,16 @@
 # Evaluating LLM Limitations in Static Code Analysis
 
-A Praktikum2 research project investigating whether large language models (LLMs) can correctly predict the runtime output of intentionally complex C programs. The programs are designed using techniques drawn from cryptography and computational theory to resist static analysis, and are evaluated against multiple LLMs under three prompt conditions.
+A Praktikum 2 research project investigating whether large language models (LLMs) can correctly predict the runtime output of intentionally complex C programs. The programs are designed using techniques drawn from cryptography and computational theory to resist static analysis, and are evaluated against multiple LLMs under three prompt conditions.
 
 ## Overview
 
-Modern LLMs are increasingly used to read, review, and explain source code. This Praktikum2 research project tests a narrower and harder question: given a deliberately complex C program, can an LLM determine exactly what it prints without executing it? Five C programs were written, each built around a distinct complexity technique, and evaluated across four model configurations using three prompts of increasing specificity.
+Modern LLMs are increasingly used to read, review, and explain source code. This Praktikum 2 research project tests a narrower and harder question: given a deliberately complex C program, can an LLM determine exactly what it prints without executing it? Five C programs were written, each built around a distinct complexity technique, and evaluated across four model configurations using three prompts of increasing specificity.
 
 The core finding is that model capability on this task is a threshold rather than a gradient, a model either can maintain exact integer state across chains of data-dependent operations, or it cannot, and prompt engineering alone does not close that gap.
 
 ## Praktikum 2 Paper Report
 
-The full write-up of this praktikum2 research project is available as a PDF report:
+The full write-up of this praktikum 2 research project is available as a PDF report:
 
 [Praktikum 2 Paper Report (PDF)](./Praktikum2_Report.pdf)
 
