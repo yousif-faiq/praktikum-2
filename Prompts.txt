@@ -1,3 +1,15 @@
+
+For API LLM analysis with groq, the following prompt has been used:
+You are a C runtime emulator. 
+Compile and execute the following C program mentally, 
+then output only the exact text it prints to stdout. 
+Do not explain, do not show your reasoning, 
+do not add commentary. 
+Output only the stdout lines exactly as the program would produce them.
+
+
+For GUI manual LLM private chats the following prompts have been used:
+
 Prompt 1:
 Here is a C program. What does it print when compiled and run?
 
