@@ -19,14 +19,29 @@
 set -euo pipefail
 
 # Config
-# Available Groq models:
-#   llama-3.3-70b-versatile
-#   llama3-70b-8192
-#   mixtral-8x7b-32768
-#   gemma2-9b-it
-MODEL="qwen/qwen3-32b"
+# Available Groq models (as of 2025):
+#   Production models:
+#     llama-3.3-70b-versatile
+#     llama-3.1-8b-instant
+#     llama3-70b-8192
+#     llama3-8b-8192
+#     gemma2-9b-it
+#   Preview / reasoning models:
+#     qwen/qwen3-32b
+#     deepseek-r1-distill-llama-70b
+#     meta-llama/llama-4-scout-17b-16e-instruct
+#     meta-llama/llama-4-maverick-17b-128e-instruct
+#     mistral-saba-24b
+#     moonshotai/kimi-k2-instruct
+#     openai/gpt-oss-120b
+#     openai/gpt-oss-20b
+#
+# Override the default with:  -m <model>   or   --model <model>
+
+MODEL="llama-3.3-70b-versatile"
 MAX_TOKENS=4096
 API_URL="https://api.groq.com/openai/v1/chat/completions"
+RESULTS_FILE="groq_results.txt"
 
 if [[ $# -lt 1 ]]; then
     echo "Usage: $0 <source.c> [source2.c ...]"
@@ -112,6 +127,10 @@ build_prompt() {
 }
 
 # Main loop
+echo "Groq Evaluation Run — $(date)" >> "$RESULTS_FILE"
+echo "Model: $MODEL" >> "$RESULTS_FILE"
+echo "" >> "$RESULTS_FILE"
+
 for SRC in "$@"; do
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "  File  : $SRC"
@@ -157,7 +176,6 @@ JSON
 import sys, json
 try:
     d = json.load(sys.stdin)
-    # Check for API errors
     if 'error' in d:
         print(f'[API Error] {d[\"error\"].get(\"message\", d[\"error\"])}')
     else:
@@ -168,11 +186,24 @@ except Exception as e:
     print(sys.stdin.read())
 ")
 
+    # Print to terminal
     echo ""
     echo "LLM predicted output:"
     echo "$LLM_OUTPUT"
     echo ""
 
+    # Save to results file
+    {
+        echo "═══════════════════════════════════════════════════════════════"
+        echo "File  : $SRC"
+        echo "Model : $MODEL"
+        echo "───────────────────────────────────────────────────────────────"
+        echo "$LLM_OUTPUT"
+        echo ""
+    } >> "$RESULTS_FILE"
+
     rm -f "$TMP_STRIPPED" "$TMP_SHUFFLED"
     trap - EXIT
 done
+
+echo "[*] Results saved to $RESULTS_FILE"

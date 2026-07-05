@@ -1,0 +1,29 @@
+./c01_fptr_dispatch
+dispatch(0011) = 0x1A
+dispatch(00AB) = 0xFA
+dispatch(0200) = 0xBD
+dispatch(FFFF) = 0x8D
+
+./c02_mutual_recursion 
+run(0033) = 0xF5
+run(00CC) = 0x40
+run(01FF) = 0x10
+run(BEEF) = 0x37
+
+./c03_lfsr 
+chain(ACE1) = 0x1E
+chain(1234) = 0x34
+chain(DEAD) = 0x52
+chain(0001) = 0xFE
+
+./c04_carry_chain 
+crunch(0042) = 0x03
+crunch(1337) = 0x81
+crunch(ABCD) = 0xB4
+crunch(FF00) = 0x12
+
+./c05_state_machines 
+lockstep(0001) = 0x12
+lockstep(0080) = 0xBA
+lockstep(1234) = 0x21
+lockstep(FFFF) = 0x30

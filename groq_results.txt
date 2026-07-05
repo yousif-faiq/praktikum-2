@@ -1,0 +1,61 @@
+
+Groq Evaluation Run — Sun Jul  5 13:07:23 CEST 2026
+Model: llama-3.3-70b-versatile
+
+═══════════════════════════════════════════════════════════════
+File  : ./c_source/c01_fptr_dispatch.c
+Model : llama-3.3-70b-versatile
+───────────────────────────────────────────────────────────────
+dispatch(0011) = 0x4E
+dispatch(00AB) = 0x55
+dispatch(0200) = 0x8F
+dispatch(FFFF) = 0x4B
+
+Groq Evaluation Run — Sun Jul  5 13:14:17 CEST 2026
+Model: llama-3.3-70b-versatile
+
+═══════════════════════════════════════════════════════════════
+File  : ./c_source/c02_mutual_recursion.c
+Model : llama-3.3-70b-versatile
+───────────────────────────────────────────────────────────────
+run(0033) = 0x4E
+run(00CC) = 0x4E
+run(01FF) = 0x4E
+run(0BEEF) = 0x4E
+
+Groq Evaluation Run — Sun Jul  5 13:14:27 CEST 2026
+Model: llama-3.3-70b-versatile
+
+═══════════════════════════════════════════════════════════════
+File  : ./c_source/c03_lfsr.c
+Model : llama-3.3-70b-versatile
+───────────────────────────────────────────────────────────────
+chain(ACE1) = 0x4A
+chain(1234) = 0x4B
+chain(DEAD) = 0x03
+chain(0001) = 0x34
+
+Groq Evaluation Run — Sun Jul  5 13:14:38 CEST 2026
+Model: llama-3.3-70b-versatile
+
+═══════════════════════════════════════════════════════════════
+File  : ./c_source/c04_carry_chain.c
+Model : llama-3.3-70b-versatile
+───────────────────────────────────────────────────────────────
+crunch(0042) = 0x3E
+crunch(1337) = 0x55
+crunch(ABCD) = 0x1D
+crunch(FF00) = 0x55
+
+Groq Evaluation Run — Sun Jul  5 13:14:44 CEST 2026
+Model: llama-3.3-70b-versatile
+
+═══════════════════════════════════════════════════════════════
+File  : ./c_source/c05_state_machines.c
+Model : llama-3.3-70b-versatile
+───────────────────────────────────────────────────────────────
+lockstep(0001) = 0x6E
+lockstep(0080) = 0x45
+lockstep(1234) = 0x55
+lockstep(FFFF) = 0x7A
+
