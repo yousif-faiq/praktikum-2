@@ -43,10 +43,58 @@ MAX_TOKENS=4096
 API_URL="https://api.groq.com/openai/v1/chat/completions"
 RESULTS_FILE="groq_results.txt"
 
-if [[ $# -lt 1 ]]; then
-    echo "Usage: $0 <source.c> [source2.c ...]"
+# Parse CLI flags
+FILES=()
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -m|--model)
+            MODEL="$2"
+            shift 2
+            ;;
+        -l|--list-models)
+            echo "Available Groq models:"
+            echo "  llama-3.3-70b-versatile"
+            echo "  llama-3.1-8b-instant"
+            echo "  llama3-70b-8192"
+            echo "  llama3-8b-8192"
+            echo "  gemma2-9b-it"
+            echo "  qwen/qwen3-32b"
+            echo "  deepseek-r1-distill-llama-70b"
+            echo "  meta-llama/llama-4-scout-17b-16e-instruct"
+            echo "  meta-llama/llama-4-maverick-17b-128e-instruct"
+            echo "  mistral-saba-24b"
+            echo "  moonshotai/kimi-k2-instruct"
+            echo "  openai/gpt-oss-120b"
+            echo "  openai/gpt-oss-20b"
+            exit 0
+            ;;
+        -h|--help)
+            echo "Usage: $0 [-m MODEL] <source.c> [source2.c ...]"
+            echo ""
+            echo "Options:"
+            echo "  -m, --model MODEL     Set the Groq model (default: $MODEL)"
+            echo "  -l, --list-models     List available models and exit"
+            echo "  -h, --help            Show this help and exit"
+            exit 0
+            ;;
+        -*)
+            echo "Unknown option: $1"
+            echo "Run '$0 --help' for usage."
+            exit 1
+            ;;
+        *)
+            FILES+=("$1")
+            shift
+            ;;
+    esac
+done
+
+if [[ ${#FILES[@]} -lt 1 ]]; then
+    echo "Usage: $0 [-m MODEL] <source.c> [source2.c ...]"
+    echo "Run '$0 --help' for more options."
     exit 1
 fi
+
 
 if [[ -z "${GROQ_API_KEY:-}" ]]; then
     echo "ERROR: GROQ_API_KEY is not set."
@@ -55,7 +103,7 @@ if [[ -z "${GROQ_API_KEY:-}" ]]; then
     exit 1
 fi
 
-# Step 1 — Strip C comments (removes inline hints)
+# Step 1: Strip C comments (removes inline hints)
 strip_comments() {
     local file="$1"
     python3 - "$file" <<'PYEOF'
@@ -71,7 +119,7 @@ print(src.strip())
 PYEOF
 }
 
-# Step 2 — Shuffle top-level blocks (non-sequential presentation)
+# Step 2: Shuffle top-level blocks (non-sequential presentation)
 shuffle_blocks() {
     local file="$1"
     python3 - "$file" <<'PYEOF'
@@ -93,7 +141,7 @@ print('\n\n'.join(blocks))
 PYEOF
 }
 
-# Step 3 — Noise preamble
+# Step 3: Noise preamble
 noise_preamble() {
     cat <<'NOISE'
 The following is an extract from a larger multi-module system.
@@ -105,12 +153,12 @@ Treat all arithmetic as wrapping (no UB). Treat all shifts as logical.
 NOISE
 }
 
-# Step 4 — JSON-escape 
+# Step 4: JSON-escape 
 json_escape() {
     python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))"
 }
 
-# Step 5 — Assemble prompt
+# Step 5: Assemble prompt
 build_prompt() {
     local file="$1"
     {
@@ -131,7 +179,7 @@ echo "Groq Evaluation Run — $(date)" >> "$RESULTS_FILE"
 echo "Model: $MODEL" >> "$RESULTS_FILE"
 echo "" >> "$RESULTS_FILE"
 
-for SRC in "$@"; do
+for SRC in "${FILES[@]}"; do
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "  File  : $SRC"
     echo "  Model : $MODEL"
