@@ -122,7 +122,6 @@ gcc c_source/c01_fptr_dispatch.c -o c_bins/c01_fptr_dispatch -std=c99
 # 2. Run the same program through an LLM via the script
 ./ask_groq.sh c_source/c01_fptr_dispatch.c
 
-# 3. Compare the LLM's predicted output against the program original output
 ```
 
 For the manual evaluations (ChatGPT, Gemini, Qwen web interfaces), each C file and prompt were submitted through each model's GUI in a fresh private chat session, with a new session opened per file and per prompt to prevent context carryover.
