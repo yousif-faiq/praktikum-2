@@ -10,8 +10,8 @@
 #
 # USAGE
 #   export GROQ_API_KEY=
-#   chmod +x ask_llm.sh
-#   ./ask_llm.sh deep_chain.c
+#   chmod +x ask_groq.sh
+#   ./ask_groq.sh deep_chain.c
 #
 # REQUIREMENTS
 #   bash, curl, python3
@@ -24,8 +24,8 @@ set -euo pipefail
 #   llama3-70b-8192
 #   mixtral-8x7b-32768
 #   gemma2-9b-it
-MODEL="openai/gpt-oss-120b"
-MAX_TOKENS=5000
+MODEL="qwen/qwen3-32b"
+MAX_TOKENS=4096
 API_URL="https://api.groq.com/openai/v1/chat/completions"
 
 if [[ $# -lt 1 ]]; then
@@ -135,7 +135,7 @@ for SRC in "$@"; do
   "messages": [
     {
       "role": "system",
-      "content": "You are a C runtime emulator. Output  what the program prints to stdout. do a basic explanation for the code."
+      "content": "You are a C runtime emulator. Compile and execute the following C program mentally, then output only the exact text it prints to stdout. Do not explain, do not show your reasoning, do not add commentary. Output only the stdout lines exactly as the program would produce them."
     },
     {
       "role": "user",
