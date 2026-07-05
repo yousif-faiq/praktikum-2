@@ -1,5 +1,5 @@
 
-Groq Evaluation Run — Sun Jul  5 13:07:23 CEST 2026
+Groq Evaluation Run :: Sun Jul  5 13:07:23 CEST 2026
 Model: llama-3.3-70b-versatile
 
 ═══════════════════════════════════════════════════════════════
@@ -11,7 +11,7 @@ dispatch(00AB) = 0x55
 dispatch(0200) = 0x8F
 dispatch(FFFF) = 0x4B
 
-Groq Evaluation Run — Sun Jul  5 13:14:17 CEST 2026
+Groq Evaluation Run :: Sun Jul  5 13:14:17 CEST 2026
 Model: llama-3.3-70b-versatile
 
 ═══════════════════════════════════════════════════════════════
@@ -23,7 +23,7 @@ run(00CC) = 0x4E
 run(01FF) = 0x4E
 run(0BEEF) = 0x4E
 
-Groq Evaluation Run — Sun Jul  5 13:14:27 CEST 2026
+Groq Evaluation Run :: Sun Jul  5 13:14:27 CEST 2026
 Model: llama-3.3-70b-versatile
 
 ═══════════════════════════════════════════════════════════════
@@ -35,7 +35,7 @@ chain(1234) = 0x4B
 chain(DEAD) = 0x03
 chain(0001) = 0x34
 
-Groq Evaluation Run — Sun Jul  5 13:14:38 CEST 2026
+Groq Evaluation Run :: Sun Jul  5 13:14:38 CEST 2026
 Model: llama-3.3-70b-versatile
 
 ═══════════════════════════════════════════════════════════════
@@ -47,7 +47,7 @@ crunch(1337) = 0x55
 crunch(ABCD) = 0x1D
 crunch(FF00) = 0x55
 
-Groq Evaluation Run — Sun Jul  5 13:14:44 CEST 2026
+Groq Evaluation Run :: Sun Jul  5 13:14:44 CEST 2026
 Model: llama-3.3-70b-versatile
 
 ═══════════════════════════════════════════════════════════════

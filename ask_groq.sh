@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #   Send a C source file to the Groq API and ask the LLM to predict
-#   the runtime output — WITHOUT explaining its reasoning.
+#   the runtime output, WITHOUT explaining its reasoning.
 #
 #   Prompt is structured to make analysis harder:
 #     • Strips comments before submission
@@ -175,7 +175,7 @@ build_prompt() {
 }
 
 # Main loop
-echo "Groq Evaluation Run — $(date)" >> "$RESULTS_FILE"
+echo "Groq Evaluation Run :: $(date)" >> "$RESULTS_FILE"
 echo "Model: $MODEL" >> "$RESULTS_FILE"
 echo "" >> "$RESULTS_FILE"
 

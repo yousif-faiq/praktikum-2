@@ -6,7 +6,7 @@ A Praktikum2 research project investigating whether large language models (LLMs)
 
 Modern LLMs are increasingly used to read, review, and explain source code. This Praktikum2 research project tests a narrower and harder question: given a deliberately complex C program, can an LLM determine exactly what it prints without executing it? Five C programs were written, each built around a distinct complexity technique, and evaluated across four model configurations using three prompts of increasing specificity.
 
-The core finding is that model capability on this task is a threshold rather than a gradient — a model either can maintain exact integer state across chains of data-dependent operations, or it cannot, and prompt engineering alone does not close that gap.
+The core finding is that model capability on this task is a threshold rather than a gradient, a model either can maintain exact integer state across chains of data-dependent operations, or it cannot, and prompt engineering alone does not close that gap.
 
 ## Praktikum 2 Paper Report
 
@@ -21,7 +21,7 @@ praktikum-2/
 ├── README.md
 ├── Praktikum2_Report.pdf     Full paper report                 
 ├── ask_groq.sh               Evaluation script (submits C files to the Groq API)
-├── prompts.txt               The three prompts used for manual and the prompt used for API evaluation
+├── prompts.md               The three prompts used for manual and the prompt used for API evaluation
 ├── groq_results.txt          Logged output from Groq API runs
 ├── c_source/                 The five C test programs
 │   ├── c01_fptr_dispatch.c       Function pointer dispatch
@@ -106,11 +106,11 @@ Results are appended to `groq_results.txt` with a timestamp and model name for e
 
 ## The Prompts
 
-Three prompts of increasing specificity are defined in `prompts.txt`:
+Three prompts of increasing specificity are defined in `prompts.md`:
 
-1. **Baseline** — simply asks what the program prints.
-2. **Structured trace** — instructs the model to trace every function call step by step and prohibits guessing.
-3. **Full environment constraint** — specifies the exact compilation environment and requires the model to declare uncertainty rather than guess.
+1. **Baseline**: simply asks what the program prints.
+2. **Structured trace**: instructs the model to trace every function call step by step and prohibits guessing.
+3. **Full environment constraint**: specifies the exact compilation environment and requires the model to declare uncertainty rather than guess.
 
 ## Reproducing the Results
 

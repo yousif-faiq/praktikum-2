@@ -1,35 +1,50 @@
+# Prompts
 
-For API LLM analysis with groq, the following prompt has been used:
-You are a C runtime emulator. 
-Compile and execute the following C program mentally, 
-then output only the exact text it prints to stdout. 
-Do not explain, do not show your reasoning, 
-do not add commentary. 
+## API LLM Analysis (Groq)
+
+For API LLM analysis with Groq, the following prompt has been used:
+
+```
+You are a C runtime emulator.
+Compile and execute the following C program mentally,
+then output only the exact text it prints to stdout.
+Do not explain, do not show your reasoning,
+do not add commentary.
 Output only the stdout lines exactly as the program would produce them.
+```
 
+## GUI Manual LLM Private Chats
 
 For GUI manual LLM private chats the following prompts have been used:
 
-Prompt 1:
+### Prompt 1
+
+```
 Here is a C program. What does it print when compiled and run?
 
 [PASTE C CODE HERE]
+```
 
-Prompt 2:
-You are a C interpreter. Read the following C code carefully and 
+### Prompt 2
+
+```
+You are a C interpreter. Read the following C code carefully and
 determine the exact output it produces when compiled with gcc and run.
 
 Rules:
 - Trace every function call step by step
 - Track the exact value of every variable at every step
-- Do not guess — only output what you can confirm by tracing
+- Do not guess, only output what you can confirm by tracing
 
 What is the exact stdout output?
 
 [PASTE C CODE HERE]
+```
 
-Prompt 3:
-You are a precise C runtime emulator running on a little-endian 
+### Prompt 3
+
+```
+You are a precise C runtime emulator running on a little-endian
 x86-64 system with the following properties:
   - gcc -O0 -std=c99
   - sizeof(int) = 4, sizeof(uint32_t) = 4
@@ -41,13 +56,14 @@ Your task: determine the EXACT stdout output of the following C program.
 
 Instructions:
   1. List every function in the order they are defined
-  2. For each seed value, trace pipeline() from the outermost 
-     call down to the deepest function, tracking the exact 
+  2. For each seed value, trace the full program from the outermost
+     call down to the deepest function, tracking the exact
      uint32_t value at every step
   3. Show the final value before the printf
   4. Print the exact output line the printf would produce
 
-Do not approximate. Do not skip steps. If you lose track of a 
+Do not approximate. Do not skip steps. If you lose track of a
 value at any point, say so explicitly rather than guessing.
 
 [PASTE C CODE HERE]
+```
