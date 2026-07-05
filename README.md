@@ -49,7 +49,7 @@ Each program takes four seed values and prints a one-byte result for each. All u
 | c04 | Carry chain arithmetic | Carries propagate across four 32-bit words through two addition passes, cascading through the whole 128-bit value |
 | c05 | Lockstep state machines | Two state variables each depend on both variables at every step, so neither can be traced in isolation |
 
-### Ground Truth Outputs
+### Program Outputs
 
 ```
 c01: dispatch(0011)=0x1A  dispatch(00AB)=0xFA  dispatch(0200)=0xBD  dispatch(FFFF)=0x8D
