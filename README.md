@@ -135,4 +135,4 @@ For the manual evaluations (ChatGPT, Gemini, Qwen web interfaces), each C file a
 
 ## License
 
-This Praktikum 2 research project was developed for academic coursework (Praktikum 2) at the University of Vienna, supervised by Prof. Dipl.-Ing. Dr. Sebastian Schrittwieser.
+This Praktikum 2 research project was developed for academic coursework (Praktikum 2) at the University of Vienna, supervised by [Prof. Dipl.-Ing. Dr. Sebastian Schrittwieser](https://ufind.univie.ac.at/en/person.html?id=112699).
