@@ -135,6 +135,4 @@ For the manual evaluations (ChatGPT, Gemini, Qwen web interfaces), each C file a
 
 ## License
 
-## License
-
 This [Praktikum Informatik 2](https://ufind.univie.ac.at/en/course.html?lv=053031&semester=2026S) research project was developed for academic coursework during the 2026 summer semester at the [Faculty of Computer Science](https://informatik.univie.ac.at/en/), [Research Group Security and Privacy](https://sec.cs.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/), supervised by [Prof. Dipl.-Ing. Dr. Sebastian Schrittwieser](https://ufind.univie.ac.at/en/person.html?id=112699).
