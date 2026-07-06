@@ -18,10 +18,10 @@ The full write-up of this praktikum 2 research project is available as a PDF rep
 
 ```
 praktikum-2/
-├── README.md
+├── README.md                 This README
 ├── Praktikum2_Report.pdf     Full paper report                 
 ├── ask_groq.sh               Evaluation script (submits C files to the Groq API)
-├── prompts.md               The three prompts used for manual and the prompt used for API evaluation
+├── prompts.md                The three prompts used for manual and the prompt used for API evaluation
 ├── groq_results.txt          Logged output from Groq API runs
 ├── c_source/                 The five C test programs
 │   ├── c01_fptr_dispatch.c       Function pointer dispatch
